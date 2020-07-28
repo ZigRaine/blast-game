@@ -23,6 +23,10 @@ cc.Class({
             type: cc.Integer,
             default: 50
         },
+        msToEnable: {
+            type: cc.Integer,
+            default: 1
+        },
         blockPrefs: [cc.Prefab]
     },
 
@@ -46,7 +50,14 @@ cc.Class({
             }
         }
 
+        this.movesEnabled = true;
+        this.disableTime = 0;
+
         this.debugPrintGrid();
+    },
+
+    start () {
+        
     },
 
     createBlockInGrid(x, y)
@@ -61,124 +72,138 @@ cc.Class({
         return newBlock;
     },
 
-    start () {
-        
-    },
-
     blockChosed(x, y)
     {
-        console.log('block choosed', x, y);
-        var block = this._grid[y][x];
-
-        if (block)
+        if (this.movesEnabled)
         {
-            var gridClone = this.gridCopy();
-            gridClone[y][x] = null;
-            var siblings = this.findBlockSiblings(x, y, block.getType(), gridClone);
+            console.log('block choosed', x, y);
+            var choosedBlock = this._grid[y][x];
 
-            if (siblings.length > 0)
+            if (choosedBlock)
             {
-                this.removeFromGrid(x, y);
-                block.node.destroy();
-                this._grid[y][x] = null;
-                siblings.forEach(pos => { this.removeFromGrid(pos.x, pos.y); });
-                this.debugPrintGrid();
-                this.moveBlocks();
-                this.debugPrintGrid();
+                var gridClone = this.gridCopy();
+                
+                gridClone[y][x] = null;
+
+                var siblings = this.findGroup(choosedBlock, gridClone);
+
+                if (siblings.length > 0)
+                {
+                    this.movesEnabled = false;
+                    this.disableTime = (new Date()).getTime();
+
+                    this.removeFromGrid(choosedBlock);
+
+                    siblings.forEach( sibling => { 
+                        this.printBlockDebugInfo("Remove", sibling);
+                        this.removeFromGrid(sibling); 
+                    });
+                    
+                    this.debugPrintGrid();
+                    this.moveBlocks();
+                    this.debugPrintGrid();
+                }
             }
         }
 
         //this.debugVerifyGrid();
     },
 
-    findBlockSiblings(x, y, type, grid)
+    findSiblings(searchBlock, grid)
     {
-        var siblings = []
+        var siblings = [];
+        var pos  = searchBlock.getPosition();
+        var type = searchBlock.getType();
 
-        console.log('Find TYPE:', type, x, y)
+        this.printBlockDebugInfo("Sibling search", searchBlock);
 
-        if (x - 1 >= 0)
+        if (pos.x - 1 >= 0)
         {
-            var sX = x - 1;
-            var block = grid[y][sX];
+            var sX = pos.x - 1;
+            var block = grid[pos.y][sX];
             
             if (block)
             {
-                console.log("leftBlock: type", block.getType(), sX, y);
+                this.printBlockDebugInfo("Sibling Left Block", block);
             
                 if (block.getType() == type)
                 {
-                    console.log("sibling", sX, y);
-                    siblings.push(new cc.Vec2(sX, y));
-                    grid[y][sX] = null;
+                    this.printBlockDebugInfo("Find Sibling", block);
+                    siblings.push(block);
+                    grid[pos.y][sX] = null;
                 }
             }
         }
 
-        if (x + 1 < this.tableCols)
+        if (pos.x + 1 < this.tableCols)
         {
-            var sX = x + 1;
-            var block = grid[y][sX];
+            var sX = pos.x + 1;
+            var block = grid[pos.y][sX];
 
             if (block)
             {
-                console.log("rightBlock: type", block.getType(), sX, y);
+                this.printBlockDebugInfo("Sibling Right Block", block);
 
                 if (block.getType() == type)
                 {
-                    console.log("sibling", sX, y)
-                    siblings.push(new cc.Vec2(sX, y));
-                    grid[y][sX] = null;
+                    this.printBlockDebugInfo("Find Sibling", block);
+                    siblings.push(block);
+                    grid[pos.y][sX] = null;
                 }
             }         
         }
 
-        if (y - 1 >= 0)
+        if (pos.y - 1 >= 0)
         {
-            var sY = y - 1;
-            var block = grid[sY][x];
+            var sY = pos.y - 1;
+            var block = grid[sY][pos.x];
 
             if (block)
             {
-                console.log("upBlock: type", block.getType(), x, sY);
+                this.printBlockDebugInfo("Sibling Up Block", block);
 
                 if (block.getType() == type)
                 {
-                    console.log("sibling", x, sY)
-                    siblings.push(new cc.Vec2(x, sY));
-                    grid[sY][x] = null;
+                    this.printBlockDebugInfo("Find Sibling", block);
+                    siblings.push(block);
+                    grid[sY][pos.x] = null;
                 }
             }        
         }
         
-        if (y + 1 < this.tableRows)
+        if (pos.y + 1 < this.tableRows)
         {
-            var sY = y + 1;
-            var block = grid[sY][x];
+            var sY = pos.y + 1;
+            var block = grid[sY][pos.x];
 
             if (block)
             {
-                console.log("bottomBlock: type", block.getType(), x, sY);
+                this.printBlockDebugInfo("Sibling Bottom Block", block);
                 
                 if (block.getType() == type)
                 {
-                    console.log("sibling", x, sY)
-                    siblings.push(new cc.Vec2(x, sY));
-                    grid[sY][x] = null;
+                    this.printBlockDebugInfo("Find Sibling", block);
+                    siblings.push(block);
+                    grid[sY][pos.x] = null;
                 }
             }     
         }
+
+        return siblings;
+    },
+
+    findGroup(block, grid)
+    {
+        var siblings = this.findSiblings(block, grid)
 
         var newSiblings = [];
 
         for (var i = 0; i < siblings.length; i++)
         {
-            newSiblings = [...newSiblings , ...(this.findBlockSiblings(siblings[i].x, siblings[i].y, type, grid))];
+            newSiblings = [...newSiblings , ...(this.findGroup(siblings[i], grid))];
         }
 
         siblings = [...siblings, ...newSiblings];
-        
-        console.log(siblings);
 
         return siblings;
     },
@@ -194,10 +219,11 @@ cc.Class({
         return copy;
     },
 
-    removeFromGrid(x, y)
+    removeFromGrid(block)
     {
-        this._grid[y][x].node.destroy();
-        this._grid[y][x] = null;
+        var pos = block.getPosition();
+        block.node.destroy();
+        this._grid[pos.y][pos.x] = null;
     },
 
     moveBlocks()
@@ -237,7 +263,7 @@ cc.Class({
                 var block = this.createBlockInGrid(col, sRow);
 
                 block.setPosition(cc.v2(col * this.tileSize, - (this.tableRows + spawnCounter)  * this.tileSize))
-                console.log("BLOCK col:", col, sRow, "POS:", col * this.tileSize, - sRow * this.tileSize);
+                console.log("Blocks col:", col, sRow, "POS:", col * this.tileSize, - sRow * this.tileSize);
                 block.runAction(new cc.moveTo(duration / 10, col * this.tileSize, - sRow * this.tileSize));
                 spawnCounter++;
             }
@@ -284,6 +310,65 @@ cc.Class({
                 }
             }
         }
-    }
-    // update (dt) {},
+    },
+
+    printBlockDebugInfo(message, block)
+    {
+        var pos = block.getPosition();
+        
+        console.log(message, `name: ${block.node.name} type: ${block.getType()} col: ${pos.x} row: ${pos.y}`);
+    },
+
+    hasMoves()
+    {
+        for (var row = 0; row < this.tableRows; row++)
+        {
+            for (var col = 0; col > this.tableCols; col++)
+            {
+                if (this.findSiblings(this._grid[row][col]).length > 0)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    },
+
+    isTilesOnPlaces()
+    {
+        for (var row = 0; row < this.tableRows; row++)
+        {
+            for (var col = 0; col > this.tableCols; col++)
+            {
+                var block = this._grid[row][col];
+
+                if (block)
+                {
+                    if ( floor(lock.node.position.x) != col * this.tileSize || floor(lock.node.position.y / this.tileSize) != - row * this.tileSize)
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+
+        return true;
+    },
+
+    update (dt)
+    {
+        if (!this.movesEnabled )
+        {
+            var currentTime = (new Date()).getTime();
+
+            if (currentTime >= this.disableTime +  this.msToEnable)
+            {
+                var result = this.isTilesOnPlaces();
+
+                this.movesEnabled = true;
+                console.log(`Moves enabled`)
+            }
+        }
+    },
 });

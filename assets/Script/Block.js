@@ -17,21 +17,21 @@ cc.Class({
 
     init: function (game, x, y) {
         this.game = game;
-        this.x = x;
-        this.y = y;
+        this._x = x;
+        this._y = y;
     },
 
     updatePosition(x, y)
     {
-        this.x = x;
-        this.y = y;
+        this._x = x;
+        this._y = y;
     },
 
     onLoad () {
         this.node.on(cc.Node.EventType.MOUSE_DOWN,
             (event) => {
                 console.log('Mouse down');
-                this.game.blockChosed(this.x, this.y);
+                this.game.blockChosed(this._x, this._y);
             },
             this);
     },
@@ -40,13 +40,19 @@ cc.Class({
 
     },
 
-    getType() {
+    getType() 
+    {
         return this.type;
     },
 
     getPosition()
     {
-        return new cc.Vec2(this.x, this.y);
+        return new cc.Vec2(this._x, this._y);
+    },
+    
+    isOnPosition()
+    {
+
     }
     // update (dt) {},
 });
