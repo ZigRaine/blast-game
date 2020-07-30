@@ -91,6 +91,9 @@
     "_components": [
       {
         "__id__": 69
+      },
+      {
+        "__id__": 70
       }
     ],
     "_prefab": null,
@@ -187,7 +190,7 @@
       "array": [
         0,
         0,
-        530.8735725198609,
+        527.4094709047232,
         0,
         0,
         0,
@@ -212,7 +215,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Sprite",
+    "_name": "Background",
     "_objFlags": 0,
     "_parent": {
       "__id__": 3
@@ -1247,7 +1250,7 @@
     "tableRows": 10,
     "tableCols": 10,
     "tileSize": 50,
-    "secondsEnableCheck": 250,
+    "msToEnable": 1,
     "blockPrefs": [
       {
         "__uuid__": "1384a2b3-5abc-4a51-aaba-56d7d42eebf0"
@@ -1595,8 +1598,8 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "40",
-    "_N$string": "40",
+    "_string": "50",
+    "_N$string": "50",
     "_fontSize": 72,
     "_lineHeight": 72,
     "_enableWrapText": true,
@@ -2374,7 +2377,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "New Label",
+    "_name": "Shuffe Count",
     "_objFlags": 0,
     "_parent": {
       "__id__": 54
@@ -2571,7 +2574,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "Progress Bat",
+    "_name": "Progress Bar",
     "_objFlags": 0,
     "_parent": {
       "__id__": 60
@@ -2925,5 +2928,35 @@
     "_fitWidth": false,
     "_fitHeight": true,
     "_id": "59Cd0ovbdF4byw5sbjJDx7"
+  },
+  {
+    "__type__": "769b5iBO3pCZKx2Pn7w9WWU",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 2
+    },
+    "_enabled": true,
+    "movesDisplay": {
+      "__id__": 41
+    },
+    "shuffleDisplay": {
+      "__id__": 58
+    },
+    "scoreDisplay": {
+      "__id__": 45
+    },
+    "progressDisplay": {
+      "__id__": 65
+    },
+    "destinationScore": 200,
+    "movesCount": 50,
+    "shuffleCount": 5,
+    "scoreForBlock": 5,
+    "scoreMultiplier": 1.3,
+    "currentMoves": 0,
+    "currentScore": 0,
+    "currentShuffles": 0,
+    "_id": "4bJmxFLtVN1LGTIcBooCiD"
   }
 ]

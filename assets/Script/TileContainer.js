@@ -5,8 +5,6 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-const BlockType = require("BlockType")
-
 cc.Class({
     extends: cc.Component,
 
@@ -86,8 +84,10 @@ cc.Class({
                 gridClone[y][x] = null;
 
                 var siblings = this.findGroup(choosedBlock, gridClone);
+                
+                var blockCount = siblings.length;
 
-                if (siblings.length > 0)
+                if (blockCount > 0)
                 {
                     this.movesEnabled = false;
                     this.disableTime = (new Date()).getTime();
@@ -99,6 +99,11 @@ cc.Class({
                         this.removeFromGrid(sibling); 
                     });
                     
+                    var blockClickEvent = new cc.Event.EventCustom('TEST_EVENT', true);
+                    blockClickEvent.setUserData({count: blockCount + 1});
+                    this.node.dispatchEvent(blockClickEvent);
+
+
                     this.debugPrintGrid();
                     this.moveBlocks();
                     this.debugPrintGrid();
