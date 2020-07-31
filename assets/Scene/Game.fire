@@ -81,19 +81,19 @@
         "__id__": 47
       },
       {
-        "__id__": 54
+        "__id__": 55
       },
       {
-        "__id__": 60
+        "__id__": 61
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 69
+        "__id__": 70
       },
       {
-        "__id__": 70
+        "__id__": 71
       }
     ],
     "_prefab": null,
@@ -1250,7 +1250,7 @@
     "tableRows": 10,
     "tableCols": 10,
     "tileSize": 50,
-    "msToEnable": 1,
+    "msToEnable": 300,
     "blockPrefs": [
       {
         "__uuid__": "1384a2b3-5abc-4a51-aaba-56d7d42eebf0"
@@ -2142,7 +2142,11 @@
     "_grayMaterial": null,
     "duration": 0.1,
     "zoomScale": 1.2,
-    "clickEvents": [],
+    "clickEvents": [
+      {
+        "__id__": 54
+      }
+    ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
     "_N$transition": 2,
@@ -2213,6 +2217,16 @@
     "_id": "43nhHQdElFhLSbtCUvImbg"
   },
   {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 2
+    },
+    "component": "",
+    "_componentId": "769b5iBO3pCZKx2Pn7w9WWU",
+    "handler": "shuffle",
+    "customEventData": ""
+  },
+  {
     "__type__": "cc.Node",
     "_name": "Shuffle Box",
     "_objFlags": 0,
@@ -2221,16 +2235,16 @@
     },
     "_children": [
       {
-        "__id__": 55
+        "__id__": 56
       },
       {
-        "__id__": 57
+        "__id__": 58
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 59
+        "__id__": 60
       }
     ],
     "_prefab": null,
@@ -2286,13 +2300,13 @@
     "_name": "Shuffle Icon",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 54
+      "__id__": 55
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 56
+        "__id__": 57
       }
     ],
     "_prefab": null,
@@ -2348,7 +2362,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 55
+      "__id__": 56
     },
     "_enabled": true,
     "_materials": [
@@ -2380,13 +2394,13 @@
     "_name": "Shuffe Count",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 54
+      "__id__": 55
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 58
+        "__id__": 59
       }
     ],
     "_prefab": null,
@@ -2442,7 +2456,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 57
+      "__id__": 58
     },
     "_enabled": true,
     "_materials": [
@@ -2476,7 +2490,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 54
+      "__id__": 55
     },
     "_enabled": true,
     "_materials": [
@@ -2512,16 +2526,16 @@
     },
     "_children": [
       {
-        "__id__": 61
+        "__id__": 62
       },
       {
-        "__id__": 66
+        "__id__": 67
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 68
+        "__id__": 69
       }
     ],
     "_prefab": null,
@@ -2577,20 +2591,20 @@
     "_name": "Progress Bar",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 60
+      "__id__": 61
     },
     "_children": [
       {
-        "__id__": 62
+        "__id__": 63
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 64
+        "__id__": 65
       },
       {
-        "__id__": 65
+        "__id__": 66
       }
     ],
     "_prefab": null,
@@ -2646,13 +2660,13 @@
     "_name": "bar",
     "_objFlags": 512,
     "_parent": {
-      "__id__": 61
+      "__id__": 62
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 63
+        "__id__": 64
       }
     ],
     "_prefab": null,
@@ -2708,7 +2722,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 62
+      "__id__": 63
     },
     "_enabled": true,
     "_materials": [
@@ -2740,7 +2754,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 61
+      "__id__": 62
     },
     "_enabled": true,
     "_materials": [
@@ -2772,12 +2786,12 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 61
+      "__id__": 62
     },
     "_enabled": true,
     "_N$totalLength": 400,
     "_N$barSprite": {
-      "__id__": 63
+      "__id__": 64
     },
     "_N$mode": 0,
     "_N$progress": 1,
@@ -2789,13 +2803,13 @@
     "_name": "New Label",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 60
+      "__id__": 61
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 67
+        "__id__": 68
       }
     ],
     "_prefab": null,
@@ -2851,7 +2865,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 66
+      "__id__": 67
     },
     "_enabled": true,
     "_materials": [
@@ -2885,7 +2899,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 60
+      "__id__": 61
     },
     "_enabled": true,
     "_materials": [
@@ -2941,16 +2955,22 @@
       "__id__": 41
     },
     "shuffleDisplay": {
-      "__id__": 58
+      "__id__": 59
     },
     "scoreDisplay": {
       "__id__": 45
     },
     "progressDisplay": {
-      "__id__": 65
+      "__id__": 66
     },
-    "destinationScore": 200,
-    "movesCount": 50,
+    "grid": {
+      "__id__": 33
+    },
+    "scoreAudio": {
+      "__uuid__": "32799dd0-83ff-4167-923b-5f8df6436a9a"
+    },
+    "destinationScore": 3500,
+    "movesCount": 40,
     "shuffleCount": 5,
     "scoreForBlock": 5,
     "scoreMultiplier": 1.3,

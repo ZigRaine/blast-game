@@ -5,6 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+const TileContainer = require('TileContainer');
+
 cc.Class({
     extends: cc.Component,
 
@@ -25,6 +27,14 @@ cc.Class({
         progressDisplay: {
             default: null,
             type: cc.ProgressBar
+        },
+        grid: {
+            default: null,
+            type: TileContainer
+        },
+        scoreAudio: {
+            default: null,
+            type: cc.AudioClip
         },
         // Game Variables
         destinationScore: {
@@ -66,20 +76,26 @@ cc.Class({
         this.movesDisplay.string = this.movesCount;
         this.progressDisplay.progress = 0;
 
-        console.log("wtf", this.currentScore);
-        this.node.on("TEST_EVENT", (event) => { this.scoreListener(event)});
+
+        this.node.on("TEST_EVENT", (event) => { this.scoreProcesser(event)});
+        this.node.on("NO_MOVES", (event) => { this.noMovesProcesser(event)});
     },
 
     start () {
 
     },
 
-    scoreListener(event)
+    scoreProcesser(event)
     {
         event.stopPropagation();
 
         var data = event.getUserData();
         var score = Math.floor(data.count * this.scoreForBlock * Math.pow(this.scoreMultiplier, data.count - 2));
+
+        if (this.scoreAudio)
+        {
+            cc.audioEngine.playEffect(this.scoreAudio, false);
+        }
 
         console.log("Score", score, data.count, this.currentScore);
 
@@ -90,11 +106,21 @@ cc.Class({
         this.scoreDisplay.string = this.currentScore;
         this.progressDisplay.progress = this.currentScore / this.destinationScore;
 
-        if (this.movesCount == 0 || this.currentScore >= this.destinationScore)
+        if (this.currentMoves == 0 || this.currentScore >= this.destinationScore)
         {
             this.loadResultScene();
         }
         
+    },
+
+    noMovesProcesser(event)
+    {
+        event.stopPropagation();
+
+        if (this.currentShuffles == 0)
+        {
+            this.loadResultScene();
+        }
     },
 
     loadResultScene()
@@ -103,5 +129,18 @@ cc.Class({
         cc.sys.localStorage.setItem("win", this.currentScore >= this.destinationScore);
  
         cc.director.loadScene("Result");
+    },
+
+    shuffle()
+    {
+        if (this.currentShuffles > 0)
+        {
+            this.currentShuffles -= 1;
+            this.shuffleDisplay.string = this.currentShuffles;
+            this.grid.shuffle();
+
+        }
     }
+
+
 });

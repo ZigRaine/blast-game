@@ -49,9 +49,10 @@ cc.Class({
         }
 
         this.movesEnabled = true;
-        this.disableTime = 0;
+        this.enableTime = 0;
 
         this.debugPrintGrid();
+        console.log(this._grid);
     },
 
     start () {
@@ -61,8 +62,9 @@ cc.Class({
     createBlockInGrid(x, y)
     {
         var newBlock = cc.instantiate(this.getBlockPref());
+        
         var blockRef = newBlock.getComponent("Block");
-
+        console.log("new block", newBlock, blockRef);
         blockRef.init(this, x, y);
         this._grid[y][x] = blockRef;
         this.node.addChild(newBlock);
@@ -89,8 +91,7 @@ cc.Class({
 
                 if (blockCount > 0)
                 {
-                    this.movesEnabled = false;
-                    this.disableTime = (new Date()).getTime();
+                    this.disableTimeout(this.msToEnable);
 
                     this.removeFromGrid(choosedBlock);
 
@@ -102,10 +103,17 @@ cc.Class({
                     var blockClickEvent = new cc.Event.EventCustom('TEST_EVENT', true);
                     blockClickEvent.setUserData({count: blockCount + 1});
                     this.node.dispatchEvent(blockClickEvent);
-
+                    
 
                     this.debugPrintGrid();
                     this.moveBlocks();
+
+                    if (!this.hasMoves())
+                    {
+                        console.log("No moves");
+                        this.node.dispatchEvent(new cc.Event.EventCustom('NO_MOVES', true));   
+                    }
+
                     this.debugPrintGrid();
                 }
             }
@@ -114,6 +122,7 @@ cc.Class({
         //this.debugVerifyGrid();
     },
 
+    /// Use only grid copy, cause modifies grid
     findSiblings(searchBlock, grid)
     {
         var siblings = [];
@@ -277,7 +286,7 @@ cc.Class({
 
     getBlockPref()
     {
-        return this.blockPrefs[Math.floor(Math.random() * this.blockPrefs.length)];
+        return this.blockPrefs[this.getRandomInt(this.blockPrefs.length - 1)];
     },
 
     debugPrintGrid()
@@ -326,11 +335,13 @@ cc.Class({
 
     hasMoves()
     {
+        var grid = this.gridCopy();
+
         for (var row = 0; row < this.tableRows; row++)
         {
-            for (var col = 0; col > this.tableCols; col++)
+            for (var col = 0; col < this.tableCols; col++)
             {
-                if (this.findSiblings(this._grid[row][col]).length > 0)
+                if (this.findSiblings(this._grid[row][col], grid).length > 0)
                 {
                     return true;
                 }
@@ -344,13 +355,13 @@ cc.Class({
     {
         for (var row = 0; row < this.tableRows; row++)
         {
-            for (var col = 0; col > this.tableCols; col++)
+            for (var col = 0; col < this.tableCols; col++)
             {
                 var block = this._grid[row][col];
 
                 if (block)
                 {
-                    if ( floor(lock.node.position.x) != col * this.tileSize || floor(lock.node.position.y / this.tileSize) != - row * this.tileSize)
+                    if ( Math.floor(block.node.position.x) != col * this.tileSize || Math.floor(block.node.position.y / this.tileSize) != - row * this.tileSize)
                     {
                         return false;
                     }
@@ -361,13 +372,81 @@ cc.Class({
         return true;
     },
 
+    shuffle()
+    {
+        if (this.movesEnabled)
+        {
+            do
+            {
+                this.disableTimeout(50);
+                this.shuffleGrid();
+            }
+            while(!this.hasMoves());
+            
+            this.disableTimeout(this.msToEnable);
+            this.updateRender();
+        }
+    },
+
+    shuffleGrid()
+    {
+        console.log(this._grid);
+
+        for (var row = 0; row < this.tableRows; row++)
+        {
+            console.log(this._grid);
+
+            for (var col = 0; col < this.tableCols; col++)
+            {  
+                
+                var block = this._grid[row][col];
+
+                if (block)
+                {
+                    var sX = this.getRandomInt(this.tableCols);
+                    var sY = this.getRandomInt(this.tableRows);
+                    var targetBlock = this._grid[sY][sX];
+                    
+                    if (targetBlock)
+                    {
+                        this._grid[sY][sX] = block;
+                        this._grid[row][col] = targetBlock;
+                        block.updatePosition(sX, sY);
+                        targetBlock.updatePosition(col, row);
+
+                        console.log(col, row, sX, sY)
+                    }
+                }
+            }
+        }
+
+        console.log(this._grid);
+    },
+
+    updateRender()
+    {
+        for (var row = 0; row < this.tableRows; row++)
+        {
+            for (var col = 0; col < this.tableCols; col++)
+            {  
+                var block = this._grid[row][col];
+
+                if (block)
+                {
+                    block.node.runAction(new cc.moveTo(0.2, col * this.tileSize, - row * this.tileSize));
+                    //block.node.setPosition(col * this.tileSize, -row  * this.tileSize); 
+                }
+            }
+        }
+    },
+
     update (dt)
     {
         if (!this.movesEnabled )
         {
             var currentTime = (new Date()).getTime();
 
-            if (currentTime >= this.disableTime +  this.msToEnable)
+            if (currentTime >= this.enableTime)
             {
                 var result = this.isTilesOnPlaces();
 
@@ -376,4 +455,23 @@ cc.Class({
             }
         }
     },
+
+    //max not included
+    getRandomInt(max)
+    {
+        return Math.floor(Math.random() * Math.floor(max));
+    },
+
+    disableTimeout(ms)
+    {
+        var enableTime = (new Date()).getTime() + ms;
+
+        this.movesEnabled = false;
+
+        if (enableTime > this.enableTime)
+        {
+            this.enableTime = enableTime;
+        }
+    }
+
 });

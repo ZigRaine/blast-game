@@ -24,7 +24,7 @@ cc.Class({
     onLoad ()
     {
         var score = cc.sys.localStorage.getItem("score");
-        var win = cc.sys.localStorage.getItem("win");
+        var win = cc.sys.localStorage.getItem("win") == "true";
 
         if (win)
         {
