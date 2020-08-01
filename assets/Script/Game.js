@@ -81,8 +81,8 @@ cc.Class({
         this.progressDisplay.progress = 0;
 
 
-        this.node.on("TEST_EVENT", (event) => { this.scoreProcesser(event)});
-        this.node.on("NO_MOVES", (event) => { this.noMovesProcesser(event)});
+        this.node.on("SCORE_EVENT", (event) => { this.scoreProcesser(event)});
+        this.node.on("NO_MOVES_EVENT", (event) => { this.noMovesProcesser(event)});
     },
 
     start () {
@@ -101,11 +101,10 @@ cc.Class({
             cc.audioEngine.playEffect(this.scoreAudio, false);
         }
 
-        console.log("Score", score, data.count, this.currentScore);
+        console.log("Score:", score, data.count, this.currentScore);
 
         this.currentScore += score;
         this.currentMoves -= 1;
-        console.log(this.currentMoves);
         this.movesDisplay.string = this.currentMoves;
         this.scoreDisplay.string = this.currentScore;
         this.progressDisplay.progress = this.currentScore / this.destinationScore;

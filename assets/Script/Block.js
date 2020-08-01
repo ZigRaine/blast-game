@@ -21,38 +21,35 @@ cc.Class({
         this._y = y;
     },
 
+    onLoad()
+    {
+        this._type = this.type;
+    },
+
     updatePosition(x, y)
     {
         this._x = x;
         this._y = y;
     },
 
-    onLoad () {
-        this.node.on(cc.Node.EventType.MOUSE_DOWN,
-            (event) => {
-                console.log('Mouse down');
-                this.game.blockChosed(this._x, this._y);
-            },
-            this);
-    },
-
-    start () {
-
+    start ()
+    {
+        this.node.on(cc.Node.EventType.MOUSE_DOWN, (event) => { this.mouseDown(event) });
     },
 
     getType() 
     {
-        return this.type;
+        return this._type;
     },
 
     getPosition()
     {
         return new cc.Vec2(this._x, this._y);
     },
-    
-    isOnPosition()
-    {
 
+    mouseDown(event)
+    {
+        event.stopPropagation();
+        this.game.blockChosed(this._x, this._y);
     }
-    // update (dt) {},
 });
