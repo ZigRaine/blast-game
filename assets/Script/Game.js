@@ -36,6 +36,10 @@ cc.Class({
             default: null,
             type: cc.AudioClip
         },
+        shuffleAudio: {
+            default: null,
+            type: cc.AudioClip
+        },
         // Game Variables
         destinationScore: {
             type: cc.Integer,
@@ -138,9 +142,12 @@ cc.Class({
             this.currentShuffles -= 1;
             this.shuffleDisplay.string = this.currentShuffles;
             this.grid.shuffle();
+            
+            if (this.shuffleAudio)
+            {
+                cc.audioEngine.playEffect(this.shuffleAudio, false);
+            }
 
         }
     }
-
-
 });

@@ -190,7 +190,7 @@
       "array": [
         0,
         0,
-        527.4094709047232,
+        513.5530644441722,
         0,
         0,
         0,
@@ -1449,8 +1449,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 89.72,
-      "height": 50.4
+      "width": 115,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1502,13 +1502,15 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "Ходы",
-    "_N$string": "Ходы",
+    "_string": "Moves",
+    "_N$string": "Moves",
     "_fontSize": 36,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "ccf5b54a-5e01-4f2b-a69f-eca2f423eb03"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 0,
@@ -1545,8 +1547,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 80.09,
-      "height": 90.72
+      "width": 98,
+      "height": 72
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1603,8 +1605,10 @@
     "_fontSize": 72,
     "_lineHeight": 72,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "ccf5b54a-5e01-4f2b-a69f-eca2f423eb03"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 1,
@@ -1641,8 +1645,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 92.62,
-      "height": 50.4
+      "width": 108,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1694,13 +1698,15 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "Очки:",
-    "_N$string": "Очки:",
+    "_string": "Score:",
+    "_N$string": "Score:",
     "_fontSize": 36,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "ccf5b54a-5e01-4f2b-a69f-eca2f423eb03"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 0,
@@ -1737,8 +1743,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 22.25,
-      "height": 50.4
+      "width": 33.33,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -1795,8 +1801,10 @@
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "ccf5b54a-5e01-4f2b-a69f-eca2f423eb03"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 0,
@@ -2053,13 +2061,15 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "Перемешать",
-    "_N$string": "Перемешать",
-    "_fontSize": 16,
+    "_string": "Shuffle",
+    "_N$string": "Shuffle",
+    "_fontSize": 20,
     "_lineHeight": 40,
     "_enableWrapText": false,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "ccf5b54a-5e01-4f2b-a69f-eca2f423eb03"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 1,
@@ -2414,8 +2424,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 22.25,
-      "height": 50.4
+      "width": 33.33,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2427,7 +2437,7 @@
       "ctor": "Float64Array",
       "array": [
         0,
-        -32.899,
+        -29.577,
         0,
         0,
         0,
@@ -2472,8 +2482,10 @@
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "ccf5b54a-5e01-4f2b-a69f-eca2f423eb03"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 0,
@@ -2823,8 +2835,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 184.92,
-      "height": 50.4
+      "width": 168.89,
+      "height": 40
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -2876,13 +2888,15 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "Прогресс",
-    "_N$string": "Прогресс",
+    "_string": "Progress",
+    "_N$string": "Progress",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "ccf5b54a-5e01-4f2b-a69f-eca2f423eb03"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 1,
@@ -2969,8 +2983,11 @@
     "scoreAudio": {
       "__uuid__": "32799dd0-83ff-4167-923b-5f8df6436a9a"
     },
+    "shuffleAudio": {
+      "__uuid__": "9cb4a7b8-a395-4b6e-b613-b0175f808251"
+    },
     "destinationScore": 3500,
-    "movesCount": 40,
+    "movesCount": 1,
     "shuffleCount": 5,
     "scoreForBlock": 5,
     "scoreMultiplier": 1.3,

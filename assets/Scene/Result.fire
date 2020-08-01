@@ -184,7 +184,7 @@
       "array": [
         0,
         0,
-        527.4094709047232,
+        513.5530644441722,
         0,
         0,
         0,
@@ -362,8 +362,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 265.99,
-      "height": 90.72
+      "width": 324,
+      "height": 72
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -415,13 +415,15 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "Победа",
-    "_N$string": "Победа",
+    "_string": "YOU WIN",
+    "_N$string": "YOU WIN",
     "_fontSize": 72,
     "_lineHeight": 72,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "ccf5b54a-5e01-4f2b-a69f-eca2f423eb03"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 1,
@@ -458,8 +460,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 40.04,
-      "height": 90.72
+      "width": 60,
+      "height": 72
     },
     "_anchorPoint": {
       "__type__": "cc.Vec2",
@@ -516,8 +518,10 @@
     "_fontSize": 72,
     "_lineHeight": 72,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "ccf5b54a-5e01-4f2b-a69f-eca2f423eb03"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 1,
@@ -558,7 +562,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 320,
+      "width": 250,
       "height": 60
     },
     "_anchorPoint": {
@@ -620,14 +624,14 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 255,
-      "g": 255,
-      "b": 255,
+      "r": 32,
+      "g": 172,
+      "b": 12,
       "a": 255
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 320,
+      "width": 250,
       "height": 70
     },
     "_anchorPoint": {
@@ -682,9 +686,9 @@
     "_opacity": 255,
     "_color": {
       "__type__": "cc.Color",
-      "r": 0,
-      "g": 0,
-      "b": 0,
+      "r": 255,
+      "g": 255,
+      "b": 255,
       "a": 255
     },
     "_contentSize": {
@@ -742,13 +746,15 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_useOriginalSize": false,
-    "_string": "Играть снова",
-    "_N$string": "Играть снова",
+    "_string": "Play Again",
+    "_N$string": "Play Again",
     "_fontSize": 40,
     "_lineHeight": 40,
     "_enableWrapText": false,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "ccf5b54a-5e01-4f2b-a69f-eca2f423eb03"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
     "_batchAsBitmap": false,
     "_styleFlags": 1,
@@ -838,13 +844,13 @@
     ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
-    "_N$transition": 2,
-    "transition": 2,
+    "_N$transition": 1,
+    "transition": 1,
     "_N$normalColor": {
       "__type__": "cc.Color",
-      "r": 230,
-      "g": 230,
-      "b": 230,
+      "r": 32,
+      "g": 172,
+      "b": 12,
       "a": 255
     },
     "_N$pressedColor": {

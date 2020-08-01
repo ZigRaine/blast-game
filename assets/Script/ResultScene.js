@@ -28,11 +28,11 @@ cc.Class({
 
         if (win)
         {
-            this.resultDisplay.string = "Победа";
+            this.resultDisplay.string = "YOU WIN";
         }
         else
         {
-            this.resultDisplay.string = "Вы проиграли";
+            this.resultDisplay.string = "YOU LOOSE";
         }
 
         this.scoreDisplay.string = score;
