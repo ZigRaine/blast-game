@@ -1,2 +1,4 @@
-# hello-world
-Hello world new project template.
+# Blast Game
+тестовый проект для Cocos Creator.
+
+Цель набрать 3500 очков
