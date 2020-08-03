@@ -16,7 +16,7 @@ cc.Class({
     },
 
     init: function (game, x, y) {
-        this.game = game;
+        this._game = game;
         this._x = x;
         this._y = y;
     },
@@ -50,6 +50,10 @@ cc.Class({
     mouseDown(event)
     {
         event.stopPropagation();
-        this.game.blockChosed(this._x, this._y);
+        
+        if (this._game)
+        {
+            this._game.blockChosed(this._x, this._y);
+        }
     }
 });
