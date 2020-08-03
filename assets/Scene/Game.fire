@@ -2747,7 +2747,7 @@
     "_spriteFrame": {
       "__uuid__": "8e458067-e6e9-40f4-88df-bb8c777e7524"
     },
-    "_type": 1,
+    "_type": 3,
     "_sizeMode": 0,
     "_fillType": 0,
     "_fillCenter": {
@@ -2756,7 +2756,7 @@
       "y": 0
     },
     "_fillStart": 0,
-    "_fillRange": 0,
+    "_fillRange": 0.3,
     "_isTrimmedMode": true,
     "_atlas": null,
     "_id": "0c0PGX5uFKaLQaeuAHIFjq"
@@ -2801,12 +2801,12 @@
       "__id__": 62
     },
     "_enabled": true,
-    "_N$totalLength": 400,
+    "_N$totalLength": 1,
     "_N$barSprite": {
       "__id__": 64
     },
-    "_N$mode": 0,
-    "_N$progress": 1,
+    "_N$mode": 2,
+    "_N$progress": 0.3,
     "_N$reverse": false,
     "_id": "84NDciGFJDDKq847ch4Wh+"
   },
