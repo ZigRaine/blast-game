@@ -65,7 +65,6 @@ cc.Class({
             if (currentTime >= this._enableTime)
             {
                 this._movesEnabled = true;
-                console.log(`Moves enabled`)
             }
         }
     },
@@ -86,7 +85,6 @@ cc.Class({
     {
         if (this._movesEnabled)
         {
-            console.log('block choosed', x, y);
             var choosedBlock = this._grid[y][x];
 
             if (choosedBlock)
@@ -146,7 +144,7 @@ cc.Class({
             {
                 this._printBlockDebugInfo("Sibling Left Block", block);
             
-                if (block.getType() == type)
+                if (block.getType() === type)
                 {
                     this._printBlockDebugInfo("Find Sibling", block);
                     siblings.push(block);
@@ -164,7 +162,7 @@ cc.Class({
             {
                 this._printBlockDebugInfo("Sibling Right Block", block);
 
-                if (block.getType() == type)
+                if (block.getType() === type)
                 {
                     this._printBlockDebugInfo("Find Sibling", block);
                     siblings.push(block);
@@ -182,7 +180,7 @@ cc.Class({
             {
                 this._printBlockDebugInfo("Sibling Up Block", block);
 
-                if (block.getType() == type)
+                if (block.getType() === type)
                 {
                     this._printBlockDebugInfo("Find Sibling", block);
                     siblings.push(block);
@@ -310,7 +308,7 @@ cc.Class({
             {
                 var block = this._grid[row][col];
 
-                if (block == null)
+                if (block === null)
                 {
                     continue;
                 }
@@ -414,8 +412,6 @@ cc.Class({
                         this._grid[row][col] = targetBlock;
                         block.updatePosition(sX, sY);
                         targetBlock.updatePosition(col, row);
-
-                        console.log(col, row, sX, sY)
                     }
                 }
             }

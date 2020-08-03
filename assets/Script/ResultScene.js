@@ -32,7 +32,7 @@ cc.Class({
         }
         else
         {
-            this.resultDisplay.string = "YOU LOOSE";
+            this.resultDisplay.string = "YOU LOSE";
         }
 
         this.scoreDisplay.string = score;

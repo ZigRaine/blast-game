@@ -101,15 +101,13 @@ cc.Class({
             cc.audioEngine.playEffect(this.scoreAudio, false);
         }
 
-        console.log("Score:", score, data.count, this.currentScore);
-
         this.currentScore += score;
-        this.currentMoves -= 1;
+        this.currentMoves--;
         this.movesDisplay.string = this.currentMoves;
         this.scoreDisplay.string = this.currentScore;
         this.progressDisplay.progress = this.currentScore / this.destinationScore;
 
-        if (this.currentMoves == 0 || this.currentScore >= this.destinationScore)
+        if (this.currentMoves === 0 || this.currentScore >= this.destinationScore)
         {
             this.loadResultScene();
         }
@@ -120,7 +118,7 @@ cc.Class({
     {
         event.stopPropagation();
 
-        if (this.currentShuffles == 0)
+        if (this.currentShuffles === 0)
         {
             this.loadResultScene();
         }
@@ -138,7 +136,7 @@ cc.Class({
     {
         if (this.currentShuffles > 0)
         {
-            this.currentShuffles -= 1;
+            this.currentShuffles--;
             this.shuffleDisplay.string = this.currentShuffles;
             this.grid.shuffle();
             
