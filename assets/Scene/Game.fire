@@ -2987,10 +2987,10 @@
       "__uuid__": "9cb4a7b8-a395-4b6e-b613-b0175f808251"
     },
     "destinationScore": 3500,
-    "movesCount": 20,
+    "movesCount": 50,
     "shuffleCount": 5,
     "scoreForBlock": 5,
-    "scoreMultiplier": 1.3,
+    "scoreMultiplier": 1.15,
     "currentMoves": 0,
     "currentScore": 0,
     "currentShuffles": 0,
